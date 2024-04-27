@@ -7,30 +7,43 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.math.BigDecimal;
 import java.util.Date;
-import java.util.Set;
 
 @Entity
-public class Excursion {
+public class Cart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "excursion_id")
+    @Column(name = "cart_id")
     @JsonProperty("id")
     @Getter
-    private Long excursionId;
+    private Long cartId;
 
-    @Column(name = "excursion_title")
-    @JsonProperty("excursion_title")
+    @Column(name = "order_tracking_number")
+    @JsonProperty("orderTrackingNumber")
     @Getter
     @Setter
-    private String title;
+    private String orderTrackingNumber;
 
-    @Column(name = "image_url")
-    @JsonProperty("image_URL")
+    @Column(name = "package_price")
+    @JsonProperty("package_price")
     @Getter
     @Setter
-    private String imageUrl;
+    private BigDecimal packagePrice;
+
+    @Column(name = "party_size")
+    @JsonProperty("party_size")
+    @Getter
+    @Setter
+    private int partySize;
+
+    @Enumerated
+    @Column(name = "status")
+    @JsonProperty("status")
+    @Getter
+    @Setter
+    private StatusType status;
 
     @CreationTimestamp
     @Column(name = "create_date")
@@ -45,20 +58,9 @@ public class Excursion {
     private Date lastUpdate;
 
     @ManyToOne
-    @JoinColumn(name = "vacation_id")
-    @JsonProperty("vacation")
+    @JoinColumn(name = "customer_id")
+    @JsonProperty("customer")
     @Getter
     @Setter
-    private Vacation vacation;
-
-    @ManyToMany
-    @JoinTable(
-            name = "excursion_cartitem",
-            joinColumns = { @JoinColumn(name = "excursion_id") },
-            inverseJoinColumns = { @JoinColumn(name = "cart_item_id") } )
-    @JsonProperty("cartitems")
-    @Getter
-    @Setter
-    private Set<CartItem> cartItems;
-
+    private Customer customer;
 }

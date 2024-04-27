@@ -11,26 +11,41 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-public class Excursion {
+public class CartItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "excursion_id")
+    @Column(name = "cart_item_id")
     @JsonProperty("id")
     @Getter
-    private Long excursionId;
+    private Long cartItemId;
 
-    @Column(name = "excursion_title")
-    @JsonProperty("excursion_title")
+
+
+    @ManyToOne
+    @JoinColumn(name = "vacation_id")
+    @JsonProperty("vacation")
     @Getter
     @Setter
-    private String title;
+    private Vacation vacation;
 
-    @Column(name = "image_url")
-    @JsonProperty("image_URL")
+
+    @ManyToMany
+    @JoinTable(
+            name = "excursion_cartitem",
+            joinColumns = { @JoinColumn(name = "cart_item_id") },
+            inverseJoinColumns = { @JoinColumn(name = "excursion_id") } )
+    @JsonProperty("excursions")
     @Getter
     @Setter
-    private String imageUrl;
+    private Set<Excursion> excursions;
+
+    @ManyToOne
+    @JoinColumn(name = "cart_id")
+    @JsonProperty("cart")
+    @Getter
+    @Setter
+    private Cart cart;
 
     @CreationTimestamp
     @Column(name = "create_date")
@@ -43,22 +58,5 @@ public class Excursion {
     @JsonProperty("last_update")
     @Getter
     private Date lastUpdate;
-
-    @ManyToOne
-    @JoinColumn(name = "vacation_id")
-    @JsonProperty("vacation")
-    @Getter
-    @Setter
-    private Vacation vacation;
-
-    @ManyToMany
-    @JoinTable(
-            name = "excursion_cartitem",
-            joinColumns = { @JoinColumn(name = "excursion_id") },
-            inverseJoinColumns = { @JoinColumn(name = "cart_item_id") } )
-    @JsonProperty("cartitems")
-    @Getter
-    @Setter
-    private Set<CartItem> cartItems;
 
 }
