@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
+@Table(name = "countries")
 public class Country {
 
     @Id

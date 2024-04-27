@@ -9,8 +9,10 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
+@Table(name = "vacations")
 public class Vacation {
 
     @Id
@@ -55,4 +57,10 @@ public class Vacation {
     @JsonProperty("last_update")
     @Getter
     private Date lastUpdate;
+
+    @OneToMany(mappedBy = "vacation")
+    @JsonProperty("excursions")
+    @Getter
+    @Setter
+    private Set<Excursion> excursions;
 }

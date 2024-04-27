@@ -11,6 +11,7 @@ import java.util.Date;
 
 @Getter
 @Entity
+@Table(name = "divisions")
 public class Division {
 
     @Id

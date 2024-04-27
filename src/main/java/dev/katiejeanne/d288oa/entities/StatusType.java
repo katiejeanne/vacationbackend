@@ -6,6 +6,6 @@ public enum StatusType {
 
     ordered,
 
-    cancelled
+    canceled
 
 }
