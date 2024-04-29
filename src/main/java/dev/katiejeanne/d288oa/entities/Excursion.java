@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
 
@@ -21,11 +22,18 @@ public class Excursion {
     @Getter
     private Long excursionId;
 
+
     @Column(name = "excursion_title")
     @JsonProperty("excursion_title")
     @Getter
     @Setter
     private String title;
+
+    @Column(name = "excursion_price")
+    @JsonProperty("excursion_price")
+    @Getter
+    @Setter
+    private BigDecimal excursionPrice;
 
     @Column(name = "image_url")
     @JsonProperty("image_URL")

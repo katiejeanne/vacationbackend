@@ -14,13 +14,10 @@ import java.util.Set;
 @Setter
 public class PurchaseData {
 
-    @NotNull
     private Customer customer;
 
-    @NotNull
     private Cart cart;
 
-    @NotNull
     private Set<CartItem> cartItems = new HashSet<>();
 
 }

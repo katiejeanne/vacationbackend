@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin
 @RequestMapping("/api/checkout")
-@Valid
 public class CheckoutController {
 
     private CheckoutService checkoutService;
@@ -19,7 +18,7 @@ public class CheckoutController {
     }
 
     @PostMapping()
-    public PurchaseResponse placeOrder(@RequestBody @Valid PurchaseData purchaseData) {
+    public PurchaseResponse placeOrder(@RequestBody PurchaseData purchaseData) {
 
         return checkoutService.placeOrder(purchaseData);
 

@@ -21,27 +21,27 @@ public class Customer {
     @JsonProperty("id")
     private Long customerId;
 
-    @Column(name = "customer_first_name")
+    @Column(name = "customer_first_name", nullable = false)
     @JsonProperty("firstName")
     @Setter
     private String firstName;
 
-    @Column(name = "customer_last_name")
+    @Column(name = "customer_last_name", nullable = false)
     @JsonProperty("lastName")
     @Setter
     private String lastName;
 
-    @Column(name = "address")
+    @Column(name = "address", nullable = false)
     @JsonProperty("address")
     @Setter
     private String address;
 
-    @Column(name = "postal_code")
+    @Column(name = "postal_code", nullable = false)
     @JsonProperty("postal_code")
     @Setter
     private String postalCode;
 
-    @Column(name = "phone")
+    @Column(name = "phone", nullable = false)
     @JsonProperty("phone")
     @Setter
     private String phone;
@@ -57,7 +57,7 @@ public class Customer {
     private Date lastUpdate;
 
     @ManyToOne
-    @JoinColumn(name = "division_id")
+    @JoinColumn(name = "division_id", nullable = false)
     @JsonProperty("division")
     @Setter
     private Division division;
