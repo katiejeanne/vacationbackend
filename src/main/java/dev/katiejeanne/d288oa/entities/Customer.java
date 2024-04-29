@@ -10,6 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.util.Date;
 import java.util.Set;
 
+@Getter
 @Entity
 @Table(name = "customers")
 public class Customer {
@@ -18,60 +19,50 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
     @JsonProperty("id")
-    @Getter
     private Long customerId;
 
     @Column(name = "customer_first_name")
     @JsonProperty("firstName")
-    @Getter
     @Setter
     private String firstName;
 
     @Column(name = "customer_last_name")
     @JsonProperty("lastName")
-    @Getter
     @Setter
     private String lastName;
 
     @Column(name = "address")
     @JsonProperty("address")
-    @Getter
     @Setter
     private String address;
 
     @Column(name = "postal_code")
     @JsonProperty("postal_code")
-    @Getter
     @Setter
     private String postalCode;
 
     @Column(name = "phone")
     @JsonProperty("phone")
-    @Getter
     @Setter
     private String phone;
 
     @Column(name = "create_date")
     @JsonProperty("create_date")
     @CreationTimestamp
-    @Getter
     private Date createDate;
 
     @Column(name = "last_update")
     @JsonProperty("last_update")
     @UpdateTimestamp
-    @Getter
     private Date lastUpdate;
 
     @ManyToOne
-    @JoinColumn(name = "division")
+    @JoinColumn(name = "division_id")
     @JsonProperty("division")
-    @Getter
     @Setter
     private Division division;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    @Getter
     @Setter
     private Set<Cart> carts;
 
