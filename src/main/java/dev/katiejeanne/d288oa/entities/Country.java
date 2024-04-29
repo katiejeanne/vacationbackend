@@ -21,7 +21,7 @@ public class Country {
     @Getter
     private Long countryId;
 
-    @Column(name = "country_name")
+    @Column(name = "country")
     @JsonProperty("country_name")
     @Getter
     @Setter

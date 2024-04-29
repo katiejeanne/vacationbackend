@@ -21,8 +21,6 @@ public class CartItem {
     @Getter
     private Long cartItemId;
 
-
-
     @ManyToOne
     @JoinColumn(name = "vacation_id")
     @JsonProperty("vacation")

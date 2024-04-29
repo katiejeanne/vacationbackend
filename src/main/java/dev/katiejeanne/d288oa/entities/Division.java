@@ -35,9 +35,19 @@ public class Division {
     @UpdateTimestamp
     private Date lastUpdate;
 
-    @ManyToOne
-    @JoinColumn(name = "country_id")
-    @JsonProperty("country")
-    @Setter
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "country_id", nullable = false, insertable = false, updatable = false)
     private Country country;
+
+    @Column(name = "country_id")
+    @JsonProperty("country_id")
+    @Getter
+    @Setter
+    public long countryId;
+
+
+    public void setCountry(Country country) {
+        setCountryId(country.getCountryId());
+        this.country = country;
+    }
 }

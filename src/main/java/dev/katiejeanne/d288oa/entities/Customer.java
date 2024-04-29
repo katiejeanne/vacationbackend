@@ -70,7 +70,7 @@ public class Customer {
     @Setter
     private Division division;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     @Getter
     @Setter
     private Set<Cart> carts;
