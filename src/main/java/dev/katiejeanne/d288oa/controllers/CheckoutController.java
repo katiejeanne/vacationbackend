@@ -17,7 +17,7 @@ public class CheckoutController {
         this.checkoutService = checkoutService;
     }
 
-    @PostMapping()
+    @PostMapping("/purchase")
     public PurchaseResponse placeOrder(@RequestBody PurchaseData purchaseData) {
 
         return checkoutService.placeOrder(purchaseData);

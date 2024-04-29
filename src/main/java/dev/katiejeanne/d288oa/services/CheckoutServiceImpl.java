@@ -42,13 +42,14 @@ public class CheckoutServiceImpl implements CheckoutService{
 
         // Attach cart items
         Set<CartItem> cartItems = purchaseData.getCartItems();
-        cartItems.forEach(cart::addCartItem);
+        cartItems.forEach(cartItem -> cart.addCartItem(cartItem));
 
         // Set the status to pending
-        cart.setStatus(StatusType.pending);
+        cart.setStatus(StatusType.ordered);
 
         // Create an order tracking number and attach it to the cart
-        cart.setOrderTrackingNumber(createOrderTrackingNumber());
+        String trackingNumber = createOrderTrackingNumber();
+        cart.setOrderTrackingNumber(trackingNumber);
 
         // Save the customer (cascades to cart and cart items)
         customerRepository.save(customer);
@@ -56,7 +57,7 @@ public class CheckoutServiceImpl implements CheckoutService{
 
         // Create a purchase response with the tracking number
         // Return the purchase response
-        return new PurchaseResponse(cart.getOrderTrackingNumber());
+        return new PurchaseResponse(trackingNumber);
 
     }
 
