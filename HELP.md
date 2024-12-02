@@ -1,7 +1,7 @@
 # Read Me First
 The following was discovered as part of building this project:
 
-* The original package name 'dev.katiejeanne.d288-oa' is invalid and this project uses 'dev.katiejeanne.d288oa' instead.
+* The original package name 'dev.katiejeanne.d288-oa' is invalid and this project uses 'dev.katiejeanne.vacationbackend' instead.
 
 # Getting Started
 
